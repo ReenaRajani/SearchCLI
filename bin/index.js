@@ -46,12 +46,12 @@ const promptForUserInfoSearch = () => {
       const searchItem = {
         ...searchTerm,
         ...searchValue
-      }
+      };
       console.log(info(`\n searching Users for ${bold(searchItem.searchTerm)} with a value of ${bold(searchItem.searchValue)}` ));
       const results = searchUsers.searchUser(searchItem);
       if(results.length){
-        console.log(info(` \t ${results.length} results found for Users  \n`))
-        console.table(results)
+        console.log(info(` \t ${results.length} results found for Users  \n`));
+        console.table(results);
       } else {
         console.log(error('Sorry, No results Found!'));
       }
@@ -66,10 +66,10 @@ const promptForTicketsInfoSearch = () => {
       const searchItem = {
         ...searchTerm,
         ...searchValue
-      }
+      };
       const results = searchTickets.searchTicket(searchItem);
       if(results.length){
-        console.log(info(`\t ${results.length} results found for Tickets \n`))
+        console.log(info(`\t ${results.length} results found for Tickets \n`));
         results.forEach((result, index) => {
           console.log(display.bold(`\n result: ${index}`));
           for(var key in result){
