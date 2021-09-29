@@ -29,6 +29,6 @@ To run the tests  use ```yarn test```  or   ``` npm run test  ``` in your termin
 
 #### What can be improved
 - effective display
-- At the moment, the user can search only once. The user must execute the command for every search. This can be improvised. Allow search options until the user Quits
+- At the moment, the user can search only once. The user must execute the command for every search. This can be improvised. Allow search options until the user quits search.
 - At the moment, we use file based search, this can be extended to search using real time data
 - The tests written are only for the search functionality. Testing coverage can be improved.
