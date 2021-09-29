@@ -8,6 +8,7 @@ const searchTickets = require('./searchTickets');
 const error = chalk.bold.red;
 const info = chalk.green;
 const log = chalk.italic.blue;
+const display = chalk.cyan;
 const header = chalk.bold.white;
 const bold = chalk.bold;
 
@@ -49,10 +50,10 @@ const promptForUserInfoSearch = () => {
       console.log(info(`\n searching Users for ${bold(searchItem.searchTerm)} with a value of ${bold(searchItem.searchValue)}` ));
       const results = searchUsers.searchUser(searchItem);
       if(results.length){
-        console.log(info(` \t ${results.length} results found. \n`))
+        console.log(info(` \t ${results.length} results found for Users  \n`))
         console.table(results)
       } else {
-        console.log(info('Sorry, No results Found!'));
+        console.log(error('Sorry, No results Found!'));
       }
 
     })
@@ -68,20 +69,23 @@ const promptForTicketsInfoSearch = () => {
       }
       const results = searchTickets.searchTicket(searchItem);
       if(results.length){
-        console.log(info(`${results.length} results have been found \n`))
-        console.table(results)
+        console.log(info(`\t ${results.length} results found for Tickets \n`))
+        results.forEach((result, index) => {
+          console.log(display.bold(`\n result: ${index}`));
+          for(var key in result){
+            console.log(display(`${key}\t:${result[key]}` ));
+          }
+        });
       } else {
-        console.log(info('Sorry, No results Found!'));
+        console.log(error('Sorry, No results Found!'));
       }
     })
   });
 }
 
-
 const greeting = header("\n Welcome to My Cli Search \n");
 console.log(greeting);
 inquirer.prompt(initialSearchPrompt).then(response => {
-  console.log(response);
   switch(response.search){
     case 'users':
       promptForUserInfoSearch();
