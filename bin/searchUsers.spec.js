@@ -66,4 +66,27 @@ describe(' Search Users', () => {
     const response = searchUsers.searchUser(searchInput)
     expect(response).toStrictEqual([])
   });
+
+  it('returns empty when search Value is not valid format for boolean value', () => {
+    const searchInput = {
+      searchTerm: 'verified',
+      searchValue: '45',
+    }
+    const response = searchUsers.searchUser(searchInput)
+    expect(response).toStrictEqual([])
+  });
+
+  it('returns data when search Value is valid for boolean values', () => {
+    const searchInput = {
+      searchTerm: 'verified',
+      searchValue: 'TRUE',
+    }
+    const response = searchUsers.searchUser(searchInput)
+    expect(response).toStrictEqual([{
+      "_id": 1,
+      "name": "Francisca Rasmussen",
+      "created_at": "2016-04-15T05:19:46-10:00",
+      "verified": true
+    }])
+  });
 })

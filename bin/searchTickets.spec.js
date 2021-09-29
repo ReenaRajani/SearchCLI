@@ -42,7 +42,7 @@ describe(' Search Ticket', () => {
       searchTerm: '_id',
       searchValue: '674a19a1-c330-45fb-8b61-',
     }
-    const response = searchTickets.searchTicket(searchInput)
+    const response = searchTickets.searchTicket(searchInput);
     expect(response).toStrictEqual([{
       "_id": "674a19a1-c330-45fb-8b61-b4d77ba87130",
       "created_at": "2016-03-07T08:24:53-11:00",
@@ -55,7 +55,7 @@ describe(' Search Ticket', () => {
         "Missouri",
         "Alabama"
       ]
-    }])
+    }]);
   });
 
   it('returns empty when the search value does not exist', () => {
@@ -63,8 +63,8 @@ describe(' Search Ticket', () => {
       searchTerm: 'assignee_id',
       searchValue: null,
     }
-    const response = searchTickets.searchTicket(searchInput)
-    expect(response).toStrictEqual([])
+    const response = searchTickets.searchTicket(searchInput);
+    expect(response).toStrictEqual([]);
   });
 
   it('returns empty when search Value is not available ', () => {
@@ -72,8 +72,8 @@ describe(' Search Ticket', () => {
       searchTerm: '_id',
       searchValue: null,
     }
-    const response = searchTickets.searchTicket(searchInput)
-    expect(response).toStrictEqual([])
+    const response = searchTickets.searchTicket(searchInput);
+    expect(response).toStrictEqual([]);
   });
 
   it('returns empty when search Value is empty string', () => {
@@ -81,11 +81,11 @@ describe(' Search Ticket', () => {
       searchTerm: 'subject',
       searchValue: '',
     }
-    const response = searchTickets.searchTicket(searchInput)
-    expect(response).toStrictEqual([])
+    const response = searchTickets.searchTicket(searchInput);
+    expect(response).toStrictEqual([]);
   });
 
-  it('returns valid data when search Value is valid', () => {
+  it('returns valid data when search Value is valid (tags)', () => {
     const searchInput = {
       searchTerm: 'tags',
       searchValue: 'Vir',
@@ -103,13 +103,13 @@ describe(' Search Ticket', () => {
         "Maine",
         "West Virginia"
       ]
-    },])
+    },]);
   });
 
-  it('returns empty when the search value does not exist', () => {
+  it('returns value when search value has valid number format (assignee_id)', () => {
     const searchInput = {
       searchTerm: 'assignee_id',
-      searchValue: 14,
+      searchValue: '14',
     }
     const response = searchTickets.searchTicket(searchInput)
     expect(response).toStrictEqual([{
@@ -124,6 +124,6 @@ describe(' Search Ticket', () => {
         "Missouri",
         "Alabama"
       ]
-    }])
+    }]);
   });
 })
